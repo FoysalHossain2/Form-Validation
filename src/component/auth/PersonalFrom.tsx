@@ -6,33 +6,43 @@ import { Step1FormData, Step1FormSchema } from "../../../utils/UserForm";
 import Field from "../common/Field";
 
 type PersonalFromProps = {
-  handleNext: () => void;
+  onSubmit: (data: {
+    fullname: string;
+    email: string;
+    phoneNumber: string;
+  }) => void;
 };
 
-const PersonalFrom = ({ handleNext }: PersonalFromProps) => {
+const PersonalFrom = ({ onSubmit }: PersonalFromProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Step1FormData>({
+  } = useForm({
     resolver: zodResolver(Step1FormSchema),
   });
 
   const submitForm = (formData: Step1FormData) => {
     console.log(formData, "formData");
     reset();
-    handleNext();
+    onSubmit({
+      fullname: formData.fullname,
+      email: formData.email,
+      phoneNumber: formData.phoneNumber,
+    });
   };
 
   console.log(errors, "errors"); // Check Errors
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(submitForm)}>
+      <h2 className="text-center mb-6 text-black">Personal Information</h2>
+
       <Field label="Full Name">
         <input
           {...register("fullname")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none  ${
             errors.fullname ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Full Name"
@@ -75,12 +85,12 @@ const PersonalFrom = ({ handleNext }: PersonalFromProps) => {
         )}
       </Field>
 
-      <div className="pt-8">
+      <div className="pt-8 flex items-end justify-end">
         <button
           type="submit"
-          className="w-full text-white rounded-full py-2 transition bg-green-500 "
+          className="w-28 border rounded-2xl py-1 px-3 lg:text-base text-sm text-white bg-green-500 hover:bg-green-600"
         >
-          Continue
+          Next
         </button>
       </div>
     </form>

@@ -2,27 +2,37 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+
 import { Step3FormData, Step3FormSchema } from "../../../utils/UserForm";
 import Field from "../common/Field";
 
-type AccountFrom = {
-  handleNext: () => void;
+type AccountFromProps = {
+  onSubmit: (data: {
+    username: string;
+    password: string;
+    confirmPassword: string;
+  }) => void;
+  onBack: () => void;
 };
 
-const AccountFrom = ({ handleNext }: AccountFrom) => {
+const AccountFrom = ({ onSubmit, onBack }: AccountFromProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Step3FormData>({
+  } = useForm({
     resolver: zodResolver(Step3FormSchema),
   });
 
   const submitForm = (formData: Step3FormData) => {
     console.log(formData, "formData");
     reset();
-    handleNext();
+    onSubmit({
+      username: formData.username,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+    });
   };
 
   console.log(errors, "errors"); // Check Errors
@@ -48,7 +58,7 @@ const AccountFrom = ({ handleNext }: AccountFrom) => {
       <Field label="Password">
         <input
           {...register("password")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none max-w-[320px] sm:max-w-[480px] md:max-w-[600px] lg:max-w-[600px]  xl:max-w-[700px] ${
             errors.password ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Password"
@@ -77,12 +87,21 @@ const AccountFrom = ({ handleNext }: AccountFrom) => {
         )}
       </Field>
 
-      <div className="pt-8">
+      {/*------ button section -------*/}
+      <div className="pt-8 flex items-center justify-between">
+        <button
+          type="button"
+          onClick={onBack}
+          className="w-28 border rounded-2xl py-1 px-3 lg:text-base text-sm text-white bg-green-500 hover:bg-green-600"
+        >
+          Previous
+        </button>
+
         <button
           type="submit"
-          className="w-full text-white rounded-full py-2 transition bg-green-500 "
+          className="w-28 border font-bold rounded-2xl py-1 px-3 lg:text-base text-sm text-white bg-green-500 hover:bg-green-600"
         >
-          Continue
+          Next
         </button>
       </div>
     </form>

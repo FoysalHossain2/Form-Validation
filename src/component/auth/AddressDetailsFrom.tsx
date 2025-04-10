@@ -6,23 +6,28 @@ import { Step2FormData, Step2FormSchema } from "../../../utils/UserForm";
 import Field from "../common/Field";
 
 type AddressDetailsFrom = {
-  handleNext: () => void;
+  onSubmit: (data: { address: string; city: string; zipcode: string }) => void;
+  onBack: () => void;
 };
 
-const AddressDetailsFrom = ({ handleNext }: AddressDetailsFrom) => {
+const AddressDetailsFrom = ({ onSubmit, onBack }: AddressDetailsFrom) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Step2FormData>({
+  } = useForm({
     resolver: zodResolver(Step2FormSchema),
   });
 
   const submitForm = (formData: Step2FormData) => {
     console.log(formData, "formData");
     reset();
-    handleNext();
+    onSubmit({
+      address: formData.address,
+      city: formData.city,
+      zipcode: formData.zipcode,
+    });
   };
 
   console.log(errors, "errors"); // Check Errors
@@ -71,13 +76,20 @@ const AddressDetailsFrom = ({ handleNext }: AddressDetailsFrom) => {
         )}
       </Field>
 
-      <div className="pt-8">
+      <div className="pt-8 flex items-center justify-between">
         <button
-          // onClick={}
-          type="submit"
-          className="w-full text-white rounded-full py-2 transition bg-green-500 "
+          type="button"
+          onClick={onBack}
+          className="w-28 border rounded-2xl py-1 px-3 lg:text-base text-sm text-white bg-green-500 hover:bg-green-600"
         >
-          Continue
+          Previous
+        </button>
+
+        <button
+          type="submit"
+          className="w-28 border rounded-2xl py-1 px-3 lg:text-base text-sm text-white bg-green-500 hover:bg-green-600"
+        >
+          Next
         </button>
       </div>
     </form>

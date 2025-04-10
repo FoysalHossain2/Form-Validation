@@ -12,7 +12,10 @@ export const Step1FormSchema = z.object({
 export const Step2FormSchema = z.object({
   address: z.string().min(1, "Address is required"),
   city: z.string().min(1, "City is required"),
-  zipcode: z.string().min(5, "Zipcode must be at least 5 digit"),
+  zipcode: z
+    .string()
+    .min(5, "Zipcode must be at least 5 digits")
+    .refine((val) => /^\d+$/.test(val), "Zip code must contain only numbers"),
 });
 
 export const Step3FormSchema = z
@@ -25,6 +28,15 @@ export const Step3FormSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   });
+
+// Combined form schema
+export const formSchema = z.object({
+  ...Step1FormSchema.shape,
+  ...Step2FormSchema.shape,
+  ...Step3FormSchema._def.schema.shape,
+});
+
+export type UseFormSchema = z.infer<typeof formSchema>;
 
 // Types
 export type Step1FormData = z.infer<typeof Step1FormSchema>;
