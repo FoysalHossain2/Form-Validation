@@ -2,10 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-first install the node
+git clone https://github.com/FoysalHossain2/Form-Validation.git
 
-````bash
+install the node
+
 npm i install
+
+npm run dev
+
+npm i react-icons
 
 First, run the development server:
 
@@ -17,7 +22,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-````
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
