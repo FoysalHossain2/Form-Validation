@@ -15,14 +15,14 @@ const AddressDetailsFrom = ({ onSubmit, onBack }: AddressDetailsFrom) => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
   } = useForm({
     resolver: zodResolver(Step2FormSchema),
   });
 
   const submitForm = (formData: Step2FormData) => {
     console.log(formData, "formData");
-    reset();
+    // reset();
     onSubmit({
       address: formData.address,
       city: formData.city,
@@ -34,10 +34,13 @@ const AddressDetailsFrom = ({ onSubmit, onBack }: AddressDetailsFrom) => {
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(submitForm)}>
+      <h2 className="text-left mb-6 text-black dark:text-white lg:text-2xl text-lg">
+        Address
+      </h2>
       <Field label=" Address">
         <input
           {...register("address")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.address ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Street Address"
@@ -51,7 +54,7 @@ const AddressDetailsFrom = ({ onSubmit, onBack }: AddressDetailsFrom) => {
       <Field label="City">
         <input
           {...register("city")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.city ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="City"
@@ -65,7 +68,7 @@ const AddressDetailsFrom = ({ onSubmit, onBack }: AddressDetailsFrom) => {
       <Field label="Zip Code">
         <input
           {...register("zipcode")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.zipcode ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Zip Code"

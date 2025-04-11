@@ -39,10 +39,13 @@ const AccountFrom = ({ onSubmit, onBack }: AccountFromProps) => {
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(submitForm)}>
+      <h2 className="text-left mb-6 text-black dark:text-white lg:text-2xl text-lg">
+        Account
+      </h2>
       <Field label="Username">
         <input
           {...register("username")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.username ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Username"
@@ -58,7 +61,7 @@ const AccountFrom = ({ onSubmit, onBack }: AccountFromProps) => {
       <Field label="Password">
         <input
           {...register("password")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none max-w-[320px] sm:max-w-[480px] md:max-w-[600px] lg:max-w-[600px]  xl:max-w-[700px] ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none max-w-[320px] sm:max-w-[480px] md:max-w-[600px] lg:max-w-[600px]  xl:max-w-[700px] ${
             errors.password ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Password"
@@ -74,7 +77,7 @@ const AccountFrom = ({ onSubmit, onBack }: AccountFromProps) => {
       <Field label="Confirm Password">
         <input
           {...register("confirmPassword")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.confirmPassword ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Confirm Password"

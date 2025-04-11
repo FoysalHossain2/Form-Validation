@@ -78,6 +78,8 @@ const MultiStepForm = () => {
       addressInfo: {},
       accountInfo: {},
     });
+    setCurrentStep(0);
+    alert("You have successfully  submit your information");
   };
 
   const renderCurrentStep = () => {
@@ -112,12 +114,12 @@ const MultiStepForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center text-black ">
+    <div className="flex flex-col items-center justify-center text-black dark:bg-black dark:text-white bg-white">
       <div className="text-center mb-16">
-        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
           Data Entry Application
         </h1>
-        <p className="mt-3 text-xl text-gray-500">
+        <p className="mt-3 text-xl text-gray-500 dark:text-white">
           Please complete all steps to submit your information
         </p>
       </div>

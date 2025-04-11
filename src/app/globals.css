@@ -35,7 +35,7 @@ body {
     @apply mb-6 space-y-2.5;
   }
   .auth-label {
-    @apply leading-[108%] lg:text-sm text-black;
+    @apply leading-[108%] lg:text-sm text-black dark:text-white;
   }
   .auth-input {
     @apply w-full rounded-md border border-[#CCCCCC]/[14%]  p-1.5 focus:outline-none lg:p-3;

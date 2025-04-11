@@ -18,14 +18,14 @@ const PersonalFrom = ({ onSubmit }: PersonalFromProps) => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
   } = useForm({
     resolver: zodResolver(Step1FormSchema),
   });
 
   const submitForm = (formData: Step1FormData) => {
     console.log(formData, "formData");
-    reset();
+    // reset();
     onSubmit({
       fullname: formData.fullname,
       email: formData.email,
@@ -33,16 +33,16 @@ const PersonalFrom = ({ onSubmit }: PersonalFromProps) => {
     });
   };
 
-  console.log(errors, "errors"); // Check Errors
-
   return (
     <form className="space-y-4" onSubmit={handleSubmit(submitForm)}>
-      <h2 className="text-center mb-6 text-black">Personal Information</h2>
+      <h2 className="text-left mb-6 text-black dark:text-white lg:text-2xl text-lg">
+        Personal Information
+      </h2>
 
       <Field label="Full Name">
         <input
           {...register("fullname")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none  ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none  ${
             errors.fullname ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Full Name"
@@ -58,7 +58,7 @@ const PersonalFrom = ({ onSubmit }: PersonalFromProps) => {
       <Field label="Email">
         <input
           {...register("email")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.email ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Email"
@@ -72,7 +72,7 @@ const PersonalFrom = ({ onSubmit }: PersonalFromProps) => {
       <Field label="Phone Number">
         <input
           {...register("phoneNumber")}
-          className={`w-full border bg-white border-gray-300 rounded-full text-black px-4 py-2 focus:outline-none ${
+          className={`w-full border bg-white dark:bg-[#1C2432] dark:text-white border-gray-300 rounded-xl text-black px-4 py-2 focus:outline-none ${
             errors.phoneNumber ? "border-red-500" : "border-gray-200"
           }`}
           placeholder="Phone Number"
