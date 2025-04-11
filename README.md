@@ -1,16 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Getting Started and following this steps
 
 git clone https://github.com/FoysalHossain2/Form-Validation.git
 
-install the node
+## install the node
 
-npm i install
+## npm i install
 
-npm run dev
+## npm run dev
 
-npm i react-icons
+## npm i react-icons
 
 First, run the development server:
 
