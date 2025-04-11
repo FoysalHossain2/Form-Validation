@@ -18,14 +18,12 @@ const PersonalFrom = ({ onSubmit }: PersonalFromProps) => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
   } = useForm({
     resolver: zodResolver(Step1FormSchema),
   });
 
   const submitForm = (formData: Step1FormData) => {
     console.log(formData, "formData");
-    // reset();
     onSubmit({
       fullname: formData.fullname,
       email: formData.email,

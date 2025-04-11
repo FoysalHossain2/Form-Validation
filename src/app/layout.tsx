@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <main className="py-4">{children}</main>
+          <main className="py-2">{children}</main>
         </Providers>
       </body>
     </html>

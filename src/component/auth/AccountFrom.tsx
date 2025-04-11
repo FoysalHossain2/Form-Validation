@@ -20,14 +20,12 @@ const AccountFrom = ({ onSubmit, onBack }: AccountFromProps) => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(Step3FormSchema),
   });
 
   const submitForm = (formData: Step3FormData) => {
     console.log(formData, "formData");
-    reset();
     onSubmit({
       username: formData.username,
       password: formData.password,

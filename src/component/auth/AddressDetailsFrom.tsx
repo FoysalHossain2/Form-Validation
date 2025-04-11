@@ -15,14 +15,12 @@ const AddressDetailsFrom = ({ onSubmit, onBack }: AddressDetailsFrom) => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
   } = useForm({
     resolver: zodResolver(Step2FormSchema),
   });
 
   const submitForm = (formData: Step2FormData) => {
     console.log(formData, "formData");
-    // reset();
     onSubmit({
       address: formData.address,
       city: formData.city,

@@ -6,6 +6,7 @@ import AccountFrom from "./auth/AccountFrom";
 import AddressDetailsFrom from "./auth/AddressDetailsFrom";
 import PersonalFrom from "./auth/PersonalFrom";
 import Card from "./common/Card";
+import StepComplete from "./StepComplete";
 import SummaryView from "./SummaryView";
 
 export type FormDataType = {
@@ -115,13 +116,18 @@ const MultiStepForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center text-black dark:bg-black dark:text-white bg-white">
-      <div className="text-center mb-16">
+      <div className="text-center mt-3">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
           Data Entry Application
         </h1>
         <p className="mt-3 text-xl text-gray-500 dark:text-white">
           Please complete all steps to submit your information
         </p>
+      </div>
+
+      {/* StepComplete */}
+      <div className="py-8">
+        <StepComplete />
       </div>
 
       <Card>{renderCurrentStep()}</Card>
